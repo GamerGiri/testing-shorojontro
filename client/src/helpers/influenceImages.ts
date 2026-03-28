@@ -5,7 +5,7 @@ import assassinImg from '../assets/assassin.jpg'
 import captainImg from '../assets/captainV2.png'
 import contessaImg from '../assets/contessa.png'
 import dukeImg from '../assets/duke.png'
-import spyImg from '../assets/spy.png
+import spyImg from '../assets/spy.png'
 
 const influenceImages: Record<Influences, string> = {
   [Influences.Ambassador]: ambassadorImg,
