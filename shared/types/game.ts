@@ -4,6 +4,7 @@ export enum Influences {
   Captain = 'Captain',
   Ambassador = 'Ambassador',
   Duke = 'Duke',
+  Spy = 'Spy' // 👈 ADD THIS
 }
 
 export enum Actions {
@@ -15,6 +16,7 @@ export enum Actions {
   Income = 'Income',
   Exchange = 'Exchange',
   Revive = 'Revive',
+  Peek = 'Peek' // 👈 NEW ACTION
 }
 
 export enum PlayerActions {
@@ -69,6 +71,9 @@ export const InfluenceAttributes: {
     legalAction: Actions.Tax,
     legalBlock: Actions.ForeignAid,
   },
+  [Influences.Spy]: {
+  legalAction: Actions.Peek,
+},
 };
 
 export const ActionAttributes: {
@@ -127,6 +132,12 @@ export const ActionAttributes: {
     coinsRequired: 10,
     requiresTarget: false,
   },
+  [Actions.Peek]: {
+  blockable: false,
+  challengeable: true,
+  influenceRequired: Influences.Spy,
+  requiresTarget: true,
+},
 };
 
 export enum Responses {
