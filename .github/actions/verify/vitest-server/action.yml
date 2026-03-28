@@ -1,0 +1,20 @@
+name: Run Vitest Server Tests
+
+runs:
+  using: composite
+  steps:
+    - uses: actions/checkout@34e114876b0b11c390a56381ad16ebd13914f8d5 # v4
+    - uses: ./.github/actions/setup-node
+    - run: |
+        cd server
+        pnpm typecheck
+      shell: bash
+    - run: sudo apt-get install -y redis-tools redis-server
+      shell: bash
+    - run: redis-cli ping
+      shell: bash
+    - run: |
+        cd server
+        pnpm add -g concurrently wait-on
+        pnpm concurrently --kill-others --success first "pnpm dev" "pnpm wait-on tcp:8008 && pnpm test"
+      shell: bash
