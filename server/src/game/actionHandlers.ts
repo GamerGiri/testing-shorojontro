@@ -508,7 +508,44 @@ export const actionHandler = async ({ roomId, playerId, action, targetPlayer, is
         })
       })
     }
-  } else {
+  } 
+  else if (action === Actions.Peek) {
+  await mutateGameState(gameState, (state) => {
+    if (isForcedMove) logForcedMove(state, player)
+
+    if (!targetPlayer) {
+      throw new TargetPlayerRequiredForActionError()
+    }
+
+    const actionPlayer = state.players.find(({ id }) => id === playerId)
+    const target = state.players.find(({ name }) => name === targetPlayer)
+
+    if (!actionPlayer || !target) {
+      throw new UnableToFindPlayerError()
+    }
+
+    if (actionPlayer.coins !== player.coins) {
+      throw new StateChangedSinceValidationError()
+    }
+
+    if (!canPlayerChooseAction(getPublicGameState({ gameState: state, playerId: actionPlayer.id }))) {
+      throw new ActionNotCurrentlyAllowedError()
+    }
+
+    const revealedCard = target.influences[0]
+
+    logEvent(state, {
+      event: EventMessages.ActionProcessed,
+      action: Actions.Peek,
+      primaryPlayer: actionPlayer.name,
+      secondaryPlayer: target.name,
+      influence: revealedCard
+    })
+
+    moveTurnToNextPlayer(state)
+  })
+}
+  else {
     await mutateGameState(gameState, (state) => {
       if (isForcedMove) logForcedMove(state, player)
 
