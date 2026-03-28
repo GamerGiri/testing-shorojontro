@@ -210,6 +210,16 @@ const translations: Translations = {
     'it-IT': 'Assassinare',
     'pt-BR': 'Assassinar',
   },
+  [Actions.Peek]: {
+    'bn-BD': 'Peek',
+    'de-DE': 'Attentat',
+    'en-US': 'Peek',
+    'es-MX': 'Asesinar',
+    'fr-FR': 'Assassiner',
+    'hi-IN': 'हत्या करना',
+    'it-IT': 'Assassinare',
+    'pt-BR': 'Assassinar',
+  },
   [Actions.Coup]: {
     'bn-BD': 'হত্যা',
     'de-DE': 'Putsch',
