@@ -135,6 +135,7 @@ export const ActionAttributes: {
   [Actions.Peek]: {
   blockable: false,
   challengeable: true,
+  coinsRequired: 7,
   influenceRequired: Influences.Spy,
   requiresTarget: true,
 },
