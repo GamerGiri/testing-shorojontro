@@ -18,6 +18,7 @@ type ActionMessages = {
   [Actions.Revive]: TranslationsForString
   [Actions.Steal]: TranslationsForString
   [Actions.Tax]: TranslationsForString
+  [Actions.Peek]: TranslationsForString
 }
 
 type AlertColorTranslations = { [key in AlertColor]: TranslationsForString }
@@ -95,6 +96,7 @@ export type Translations = ActionMessages &
     [Influences.Captain]: TranslationsForString
     [Influences.Contessa]: TranslationsForString
     [Influences.Duke]: TranslationsForString
+    [Influences.Spy]: TranslationsForString
     inviteLinkCopied: TranslationsForString
     joinExistingGame: TranslationsForString
     joinGame: TranslationsForString
