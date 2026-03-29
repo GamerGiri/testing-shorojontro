@@ -106,6 +106,7 @@ export function MaterialThemeContextProvider({
       [Influences.Captain]: isLightMode ? '#00338A' : '#3868BA',
       [Influences.Ambassador]: isLightMode ? '#3D6600' : '#78A831',
       [Influences.Duke]: isLightMode ? '#73007B' : '#AA35B2',
+      [Influences.Spy]: isLightMode ? '#7A0000' : '#B23535',
     }
 
     const actionColors = {
@@ -117,6 +118,7 @@ export function MaterialThemeContextProvider({
       [Actions.Revive]: primaryColor,
       [Actions.Steal]: influenceColors[Influences.Captain],
       [Actions.Tax]: influenceColors[Influences.Duke],
+      [Actions.Peek]: influenceColors[Influences.Spy],
     }
 
     let theme = createTheme({
